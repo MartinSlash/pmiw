@@ -1,0 +1,29 @@
+class Bala {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.ancho = 25;
+    this.alto = 8;
+    this.velocidad = 6; 
+  }
+//movimiento 
+  actualizar() {
+    this.x -= this.velocidad; // Se mueve de derecha a izquierda
+  }
+
+  dibujar() {
+    noStroke();
+    fill(50);
+    rect(this.x, this.y, this.ancho, this.alto);
+  }
+
+  // Colision devuelve true si se superponen
+  toca(jugador) {
+    return (
+      this.x < jugador.x + jugador.ancho &&
+      this.x + this.ancho > jugador.x &&
+      this.y < jugador.y + jugador.alto &&
+      this.y + this.alto > jugador.y
+    );
+  }
+}
